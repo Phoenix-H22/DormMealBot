@@ -43,10 +43,13 @@ def main():
 
                 # Login and navigate
                 automation.login("https://al-zahraa.mans.edu.eg/studentLogin", student_id, student_password)
+                print(f"Logged in as {student_id}.")
                 automation.navigate_to_meals()
+                print("Navigated to meals page.")
 
                 # Get cookies
                 cookies = automation.get_cookies()
+                print("Cookies retrieved." + str(cookies))
 
                 # Send API request for booking meals
                 url = "https://al-zahraa.mans.edu.eg/studentHome"
@@ -58,6 +61,7 @@ def main():
                 tomorrow_date = TomorrowDate().get_tomorrow_date()
                 data = {"fnName": "bookMeals", "chkMeals": tomorrow_date + "|20.7746."}
                 response = APIClient.post_request(url, headers, cookies, data)
+                print("API Response:", response)
 
                 # Verify booking and send WhatsApp message
                 if not response.get("hasError"):
