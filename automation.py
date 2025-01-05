@@ -1,9 +1,10 @@
 from selenium import webdriver
+from selenium.webdriver import Keys
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+from selenium.webdriver.common.action_chains import ActionChains
 class BookingAutomation:
     def __init__(self, brave_path, chromedriver_path):
         options = webdriver.ChromeOptions()
@@ -14,6 +15,12 @@ class BookingAutomation:
         options.add_argument("--window-size=1920x1080")
         self.driver = webdriver.Chrome(service=Service(chromedriver_path), options=options)
 
+    def clear_cache(self):
+        """Clear browser cache to save storage and ensure fresh sessions."""
+        self.driver.get("chrome://settings/clearBrowserData")
+        ActionChains(self.driver).send_keys(Keys.TAB * 4 + Keys.ENTER).perform()
+        print("Browser cache cleared.")
+        self.driver.implicitly_wait(5)  # Wait for the cache-clearing process
     def login(self, url, student_id, password):
         self.driver.get(url)
         WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, "login-form")))
