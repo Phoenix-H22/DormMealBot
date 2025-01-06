@@ -32,8 +32,8 @@ if __name__ == "__main__":
     encryptor = FileEncryption()
 
     # Paths
-    users_file = "users.json"
-    encrypted_file = "users.json.enc"
+    users_file = "../users.json"
+    encrypted_file = "../users.json.enc"
 
     # Encrypt the users file
     if os.path.exists(users_file):

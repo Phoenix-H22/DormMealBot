@@ -1,9 +1,9 @@
 from config import Config
-from automation import BookingAutomation
-from api_client import APIClient
-from date import TomorrowDate
-from messaging import MessagingService
-from file_encryption import FileEncryption
+from modules.automation import BookingAutomation
+from modules.api_client import APIClient
+from modules.date import TomorrowDate
+from modules.messaging import MessagingService
+from modules.file_encryption import FileEncryption
 import json
 import os
 
