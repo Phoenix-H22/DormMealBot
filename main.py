@@ -46,11 +46,11 @@ def main():
                 print(f"Logged in as {student_id}.")
                 automation.open_sidebar()
                 automation.navigate_to_meals()
-                print("Navigated to meals page.")
+                # print("Navigated to meals page.")
 
                 # Get cookies
                 cookies = automation.get_cookies()
-                print("Cookies retrieved." + str(cookies))
+                # print("Cookies retrieved." + str(cookies))
 
                 # Send API request for booking meals
                 url = "https://al-zahraa.mans.edu.eg/studentHome"
@@ -62,7 +62,7 @@ def main():
                 tomorrow_date = TomorrowDate().get_tomorrow_date()
                 data = {"fnName": "bookMeals", "chkMeals": tomorrow_date + "|20.7746."}
                 response = APIClient.post_request(url, headers, cookies, data)
-                print("API Response:", response)
+                # print("API Response:", response)
 
                 # Verify booking and send WhatsApp message
                 if not response.get("hasError"):
@@ -70,12 +70,12 @@ def main():
                     messaging.send_message(user["phone"], message)
                 else:
                     error_message = f"Booking failed for {student_id}: {response.get('errMsg')}."
-                    print(error_message)
+                    # print(error_message)
                     messaging.notify_failure(user["phone"], error_message)
 
             except Exception as e:
                 error_message = f"Error for user {user['student_id']}: {str(e)}"
-                print(error_message)
+                # print(error_message)
                 messaging.notify_failure(user["phone"], error_message)
 
     except Exception as e:

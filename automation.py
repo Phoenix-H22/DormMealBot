@@ -28,7 +28,8 @@ class BookingAutomation:
             toggle_button.click()
             # print("Sidebar opened successfully.")
         except Exception as e:
-            print(f"Failed to open sidebar: {e}")
+            # print(f"Failed to open sidebar: {e}")
+            pass
     def clear_cache(self):
         """Clear browser cache to save storage and ensure fresh sessions."""
         self.driver.get("chrome://settings/clearBrowserData")
