@@ -21,8 +21,8 @@ def main():
     encryptor = FileEncryption()  # To handle user file decryption
 
     # Define file paths
-    encrypted_file = "/home/bookinguser/booking_project/users.json.enc"
-    decrypted_file = "/home/bookinguser/booking_project/users_decrypted.json"
+    encrypted_file = "users.json.enc"
+    decrypted_file = "users_decrypted.json"
 
     try:
         # Decrypt the users.json.enc file
@@ -42,7 +42,7 @@ def main():
                 automation.clear_cache()
 
                 # Login and navigate
-                automation.login("https://al-zahraa.mans.edu.eg/studentLogin", student_id, student_password)
+                automation.login(Config.LOGIN_URL, student_id, student_password)
                 print(f"Logged in as {student_id}.")
                 automation.open_sidebar()
                 automation.navigate_to_meals()
@@ -53,7 +53,6 @@ def main():
                 # print("Cookies retrieved." + str(cookies))
 
                 # Send API request for booking meals
-                url = "https://al-zahraa.mans.edu.eg/studentHome"
                 headers = {
                     "Accept": "*/*",
                     "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
@@ -61,7 +60,7 @@ def main():
                 }
                 tomorrow_date = TomorrowDate().get_tomorrow_date()
                 data = {"fnName": "bookMeals", "chkMeals": tomorrow_date + "|20.7746."}
-                response = APIClient.post_request(url, headers, cookies, data)
+                response = APIClient.post_request(Config.HOME_URL, headers, cookies, data)
                 # print("API Response:", response)
 
                 # Verify booking and send WhatsApp message

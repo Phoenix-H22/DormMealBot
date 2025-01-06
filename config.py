@@ -11,6 +11,8 @@ class Config:
     WHATSAPP_APP_KEY = os.getenv("WHATSAPP_APP_KEY")
     WHATSAPP_APP_SECRET = os.getenv("WHATSAPP_APP_SECRET")
     ENCRYPTION_KEY = os.getenv("ENCRYPTION_KEY")
+    LOGIN_URL = os.getenv("LOGIN_URL")
+    HOME_URL = os.getenv("HOME_URL")
 
     @staticmethod
     def validate():
