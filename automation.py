@@ -46,7 +46,7 @@ class BookingAutomation:
         )
         login_button.click()
     #      take a screenshot
-        self.driver.save_screenshot('login-screenshot' + time.strftime("%Y%m%d-%H%M%S") + '.png')
+    #     self.driver.save_screenshot('login-screenshot' + time.strftime("%Y%m%d-%H%M%S") + '.png')
 
     def navigate_to_meals(self):
         WebDriverWait(self.driver, 10).until(
