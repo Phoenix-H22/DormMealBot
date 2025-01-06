@@ -16,7 +16,19 @@ class BookingAutomation:
         options.add_argument("--no-sandbox")
         options.add_argument("--window-size=1920x1080")
         self.driver = webdriver.Chrome(service=Service(chromedriver_path), options=options)
+        # Example usage
+        self.driver.set_window_size(1024, 768)  # Set a larger screen size
 
+    def open_sidebar(self):
+        try:
+            # Detect and click the sidebar toggle button
+            toggle_button = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.ID, "mobile_btn"))  # Replace with the actual selector
+            )
+            toggle_button.click()
+            print("Sidebar opened successfully.")
+        except Exception as e:
+            print(f"Failed to open sidebar: {e}")
     def clear_cache(self):
         """Clear browser cache to save storage and ensure fresh sessions."""
         self.driver.get("chrome://settings/clearBrowserData")

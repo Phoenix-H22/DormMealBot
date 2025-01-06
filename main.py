@@ -44,6 +44,7 @@ def main():
                 # Login and navigate
                 automation.login("https://al-zahraa.mans.edu.eg/studentLogin", student_id, student_password)
                 print(f"Logged in as {student_id}.")
+                automation.open_sidebar()
                 automation.navigate_to_meals()
                 print("Navigated to meals page.")
 
