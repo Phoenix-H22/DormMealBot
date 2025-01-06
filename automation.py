@@ -1,3 +1,5 @@
+import time
+
 from selenium import webdriver
 from selenium.webdriver import Keys
 from selenium.webdriver.chrome.service import Service
@@ -30,6 +32,8 @@ class BookingAutomation:
             EC.element_to_be_clickable((By.CLASS_NAME, "account-btn"))
         )
         login_button.click()
+    #      take a screenshot
+        self.driver.save_screenshot('login-screenshot' + time.strftime("%Y%m%d-%H%M%S") + '.png')
 
     def navigate_to_meals(self):
         WebDriverWait(self.driver, 10).until(
