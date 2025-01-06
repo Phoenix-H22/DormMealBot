@@ -26,7 +26,7 @@ class BookingAutomation:
                 EC.element_to_be_clickable((By.ID, "mobile_btn"))  # Replace with the actual selector
             )
             toggle_button.click()
-            print("Sidebar opened successfully.")
+            # print("Sidebar opened successfully.")
         except Exception as e:
             print(f"Failed to open sidebar: {e}")
     def clear_cache(self):
