@@ -21,8 +21,8 @@ def main():
     encryptor = FileEncryption()  # To handle user file decryption
 
     # Define file paths
-    encrypted_file = "users.json.enc"
-    decrypted_file = "users_decrypted.json"
+    encrypted_file = "/home/bookinguser/booking_project/users.json.enc"
+    decrypted_file = "/home/bookinguser/booking_project/users_decrypted.json"
 
     try:
         # Decrypt the users.json.enc file
