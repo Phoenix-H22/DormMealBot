@@ -3,3 +3,4 @@
 /.idea/
 users.json
 users.json.enc
+/modules/__pycache__

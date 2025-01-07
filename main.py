@@ -37,6 +37,7 @@ def main():
             try:
                 student_id = user["student_id"]
                 student_password = user["password"]
+                meal_type = user["mealType"]
 
                 # Clear browser cache before login
                 automation.clear_cache()
@@ -59,7 +60,10 @@ def main():
                     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
                 }
                 tomorrow_date = TomorrowDate().get_tomorrow_date()
-                data = {"fnName": "bookMeals", "chkMeals": tomorrow_date + "|20.7746."}
+                if meal_type == "lunch":
+                    data = {"fnName": "bookMeals", "chkMeals": tomorrow_date + "|20.7746."}
+                else:
+                    data = {"fnName": "bookMeals", "chkMeals": tomorrow_date + "|20.8134." + "," + tomorrow_date + "|20.7746."}
                 response = APIClient.post_request(Config.HOME_URL, headers, cookies, data)
                 # print("API Response:", response)
 
